@@ -26,7 +26,18 @@ class InflectorTagLib {
         if (word) {
             out << Inflector.instance.singularize(word)
         } else {
-            throw new IllegalArgumentException('Tag camelcase requires a word')
+            throw new IllegalArgumentException('Tag singularize requires a word')
+        }
+    }
+
+    def pluralize = { args ->
+        def word = args.word
+        def count = args.'count' as Integer ?: 2
+
+        if (word) {
+            out << Inflector.instance.pluralize(word, count)
+        } else {
+            throw new IllegalArgumentException('Tag pluralize requires a word')
         }
     }
 

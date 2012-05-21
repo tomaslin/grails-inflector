@@ -36,4 +36,32 @@ class InflectorTagLibSpec extends Specification {
         "parentheses" | "parenthesis"
     }
 
+    @Unroll("#singular pluralized is #plural ")
+    def "pluralize works correctly"() {
+        expect:
+        applyTemplate("<g:pluralize word='${ singular }'/>") == plural
+
+        where:
+        plural        | singular
+        "rabbits"     | "rabbit"
+        "octopi"      | "octopus"
+        "news"        | "news"
+        "parentheses" | "parenthesis"
+    }
+
+    def "pluralize with a count works correctly"() {
+        expect:
+        applyTemplate("<g:pluralize word='rabbit' count='${ count }'/>") == plural
+
+        where:
+        count | plural
+        -399  | 'rabbits'
+        -1    | 'rabbit'
+        0     | 'rabbits'
+        1     | 'rabbit'
+        2     | 'rabbits'
+        400   | 'rabbits'
+    }
+
+
 }
