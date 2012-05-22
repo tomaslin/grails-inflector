@@ -9,9 +9,12 @@
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$USER_HOME$/.grails/2.0.2/projects/inflector/plugins/release-1.0.0">
-      <sourceFolder url="file://$USER_HOME$/.grails/2.0.2/projects/inflector/plugins/release-1.0.0/src/java" isTestSource="false" />
-      <sourceFolder url="file://$USER_HOME$/.grails/2.0.2/projects/inflector/plugins/release-1.0.0/src/groovy" isTestSource="false" />
+    <content url="file://$USER_HOME$/.grails/2.0.2/projects/inflector/plugins/release-2.0.0">
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.2/projects/inflector/plugins/release-2.0.0/src/java" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.2/projects/inflector/plugins/release-2.0.0/src/groovy" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/.grails/2.0.2/projects/inflector/plugins/rest-client-builder-1.0.2">
+      <sourceFolder url="file://$USER_HOME$/.grails/2.0.2/projects/inflector/plugins/rest-client-builder-1.0.2/src/groovy" isTestSource="false" />
     </content>
     <content url="file://$USER_HOME$/.grails/2.0.2/projects/inflector/plugins/spock-0.6" />
     <content url="file://$USER_HOME$/.grails/2.0.2/projects/inflector/plugins/svn-1.0.1">

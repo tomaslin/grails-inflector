@@ -1,6 +1,8 @@
 #Inflector Plugin for Grails
 
-This plugin provides a set of tags to make inflections easier. 
+This plugin provides a set of simple tags to simplify common text inflections. The most common case is the ability to pluralize and singularize words.
+
+The plugin makes it easy to say 'Currently Logged In: 2 Users' vs. 'Currently Logged In: 1 User'.
 
 It uses the Inflector class from the JBoss Modeshape library, which is in turn based on the Ruby Inflector.rb.
 
