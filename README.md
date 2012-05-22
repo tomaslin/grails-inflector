@@ -64,6 +64,8 @@ Capitalizes all the words and replaces some characters in the string to create a
 ###ordinalize 
 Turns a non-negative number into an ordinal string used to denote the position in an ordered sequence, such as 1st, 2nd,3rd, 4th.
 
+##Using additional tags
+
 To use them, simply call the tag with the string to be transformed in the body.
 
 For example, 
