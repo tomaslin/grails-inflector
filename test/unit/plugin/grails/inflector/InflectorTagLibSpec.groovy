@@ -1,16 +1,46 @@
 package plugin.grails.inflector
 
 import grails.test.mixin.TestFor
+import org.codehaus.groovy.grails.web.taglib.exceptions.GrailsTagException
+import org.modeshape.common.text.Inflector
 import spock.lang.Specification
 import spock.lang.Unroll
 
 @TestFor(InflectorTagLib)
 class InflectorTagLibSpec extends Specification {
 
+
+    @Unroll("#singular pluralized is #plural ")
+    def "pluralize works correctly"() {
+        expect:
+        applyTemplate("<g:pluralize>${ singular }</g:pluralize>") == plural
+
+        where:
+        plural        | singular
+        "rabbits"     | "rabbit"
+        "octopi"      | "octopus"
+        "news"        | "news"
+        "parentheses" | "parenthesis"
+    }
+
+    def "pluralize with a count works correctly"() {
+        expect:
+        applyTemplate("<g:pluralize count='${ count }'>rabbit</g:pluralize>") == plural
+
+        where:
+        count | plural
+        -399  | 'rabbits'
+        -1    | 'rabbit'
+        0     | 'rabbits'
+        1     | 'rabbit'
+        2     | 'rabbits'
+        400   | 'rabbits'
+    }
+
     @Unroll("#number ordinalized is #expected ")
     def "ordinalize works correctly"() {
         expect:
-        applyTemplate("<g:ordinalize number='${ number }' />") == expected
+        applyTemplate("<g:ordinalize>${ number }</g:ordinalize>") == expected
 
         where:
         number | expected
@@ -26,7 +56,7 @@ class InflectorTagLibSpec extends Specification {
     @Unroll("#singular ordinalized is #plural ")
     def "singularize works correctly"() {
         expect:
-        applyTemplate("<g:singularize word='${ plural }'/>") == singular
+        applyTemplate("<g:singularize>${ plural }</g:singularize>") == singular
 
         where:
         plural        | singular
@@ -36,38 +66,40 @@ class InflectorTagLibSpec extends Specification {
         "parentheses" | "parenthesis"
     }
 
-    @Unroll("#singular pluralized is #plural ")
-    def "pluralize works correctly"() {
+    @Unroll('#tag')
+    def 'additional tags'() {
         expect:
-        applyTemplate("<g:pluralize word='${ singular }'/>") == plural
+        applyTemplate("<g:$tag>$word</g:$tag>") == result
 
         where:
-        plural        | singular
-        "rabbits"     | "rabbit"
-        "octopi"      | "octopus"
-        "news"        | "news"
-        "parentheses" | "parenthesis"
+        tag          | word                     | result
+        'camelCase'  | 'active_record'          | 'activeRecord'
+        'camelCase'  | 'first_name'             | 'firstName'
+        'underscore' | 'activeRecord'           | 'active_record'
+        'underscore' | 'ActiveRecord'           | 'active_record'
+        'capitalize' | 'sound and the fury'     | 'Sound and the fury'
+        'humanize'   | 'employee_salary'        | 'Employee salary'
+        'humanize'   | 'author_id'              | 'Author'
+        'titleCase'  | 'man from the boondocks' | 'Man From The Boondocks'
+        'titleCase'  | 'x-men: the last stand'  | 'X-Men: The Last Stand'
     }
 
-    def "pluralize with a count works correctly"() {
-        expect:
-        applyTemplate("<g:pluralize word='rabbit' count='${ count }'/>") == plural
+    def 'errors'() {
+        when:
+        applyTemplate("<g:$tag/>")
+
+        then:
+        thrown GrailsTagException
 
         where:
-        count | plural
-        -399  | 'rabbits'
-        -1    | 'rabbit'
-        0     | 'rabbits'
-        1     | 'rabbit'
-        2     | 'rabbits'
-        400   | 'rabbits'
+        tag << ['camelCase', 'undescore', 'humanize', 'titleCase']
     }
 
-    def "humanize"() {
+    def 'default pluralizer'() {
+        given:
+        Inflector.instance.addPluralize('(heroku)$', '$1Rocks');
         expect:
-        applyTemplate("<g:humanize word='apple_id' />") == 'Apple'
-        applyTemplate("<g:humanize word='apple_and_bananas'/>") == 'Apple and bananas'
+        applyTemplate( '<g:pluralize>heroku</g:pluralize>' ) == 'herokuRocks'
     }
-
 
 }
