@@ -10,7 +10,6 @@ class InflectorGrailsPlugin {
         "grails-app/views/error.gsp"
     ]
 
-    // TODO Fill in these fields
     def title = "Inflector Plugin" // Headline display name of the plugin
     def author = "Tomas Lin"
     def authorEmail = "tomaslin@gmail.com"
@@ -20,13 +19,13 @@ Now you can pluralize, singularize and even ordinalize your words without depend
 '''
 
     // URL to the plugin's documentation
-    def documentation = "http://grails.org/plugin/inflector"
+    def documentation = "https://github.com/tomaslin/grails-inflector/"
 
     // License: one of 'APACHE', 'GPL2', 'GPL3'
     def license = "APACHE"
 
     // Online location of the plugin's browseable source code.
-    def scm = [ url: "http://svn.grails-plugins.codehaus.org/browse/grails-plugins/" ]
+    def scm = [ url: "https://github.com/tomaslin/grails-inflector/" ]
 
     def doWithWebDescriptor = { xml ->
     }
