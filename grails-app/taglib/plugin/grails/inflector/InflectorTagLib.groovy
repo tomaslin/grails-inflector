@@ -41,5 +41,14 @@ class InflectorTagLib {
         }
     }
 
+    def humanize = { args ->
+        def word = args.word
+        if (word) {
+            out << Inflector.instance.humanize(word)
+        } else {
+            throw new IllegalArgumentException('Tag pluralize requires a word')
+        }
+    }
+
 
 }

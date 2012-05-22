@@ -63,5 +63,11 @@ class InflectorTagLibSpec extends Specification {
         400   | 'rabbits'
     }
 
+    def "humanize"() {
+        expect:
+        applyTemplate("<g:humanize word='apple_id' />") == 'Apple'
+        applyTemplate("<g:humanize word='apple_and_bananas'/>") == 'Apple and bananas'
+    }
+
 
 }
