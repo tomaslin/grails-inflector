@@ -12,17 +12,17 @@ The tags contained are as follows:
 ###Pluralize
 Gives the plural of words
 
-     <g:pluralize>Chicken</g:pluralize> -> Chickens
+     <inf:pluralize>Chicken</inf:pluralize> -> Chickens
 
 Pluralize also takes a count, so 
 
-     <g:pluralize count="1">Chicken</g:pluralize> -> Chicken
+     <inf:pluralize count="1">Chicken</inf:pluralize> -> Chicken
 
 ###Singularize
 
 The opposite of pluralize.
 
-     <g:singularize>Chickens</g:singularize> -> Chicken
+     <inf:singularize>Chickens</inf:singularize> -> Chicken
 
 ####Providing your own rules
 
@@ -34,7 +34,7 @@ For example, adding the following in your bootstrap file:
 
 would then enable you to call:
 
-     <g:pluralize>heroku</g:pluralize> -> herokuRocks
+     <inf:pluralize>heroku</inf:pluralize> -> herokuRocks
 
 similarly, you can also add singular matches:
 
@@ -70,6 +70,6 @@ To use them, simply call the tag with the string to be transformed in the body.
 
 For example, 
 
-    <g:ordinalize>2</g:ordinalize> => 2nd
+    <inf:ordinalize>2</inf:ordinalize> => 2nd
 
 

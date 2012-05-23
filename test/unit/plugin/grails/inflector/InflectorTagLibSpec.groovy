@@ -13,7 +13,7 @@ class InflectorTagLibSpec extends Specification {
     @Unroll("#singular pluralized is #plural ")
     def "pluralize works correctly"() {
         expect:
-        applyTemplate("<g:pluralize>${ singular }</g:pluralize>") == plural
+        applyTemplate("<inf:pluralize>${ singular }</inf:pluralize>") == plural
 
         where:
         plural        | singular
@@ -25,7 +25,7 @@ class InflectorTagLibSpec extends Specification {
 
     def "pluralize with a count works correctly"() {
         expect:
-        applyTemplate("<g:pluralize count='${ count }'>rabbit</g:pluralize>") == plural
+        applyTemplate("<inf:pluralize count='${ count }'>rabbit</inf:pluralize>") == plural
 
         where:
         count | plural
@@ -40,7 +40,7 @@ class InflectorTagLibSpec extends Specification {
     @Unroll("#number ordinalized is #expected ")
     def "ordinalize works correctly"() {
         expect:
-        applyTemplate("<g:ordinalize>${ number }</g:ordinalize>") == expected
+        applyTemplate("<inf:ordinalize>${ number }</inf:ordinalize>") == expected
 
         where:
         number | expected
@@ -56,7 +56,7 @@ class InflectorTagLibSpec extends Specification {
     @Unroll("#singular ordinalized is #plural ")
     def "singularize works correctly"() {
         expect:
-        applyTemplate("<g:singularize>${ plural }</g:singularize>") == singular
+        applyTemplate("<inf:singularize>${ plural }</inf:singularize>") == singular
 
         where:
         plural        | singular
@@ -69,7 +69,7 @@ class InflectorTagLibSpec extends Specification {
     @Unroll('#tag')
     def 'additional tags'() {
         expect:
-        applyTemplate("<g:$tag>$word</g:$tag>") == result
+        applyTemplate("<inf:$tag>$word</inf:$tag>") == result
 
         where:
         tag          | word                     | result
@@ -86,7 +86,7 @@ class InflectorTagLibSpec extends Specification {
 
     def 'errors'() {
         when:
-        applyTemplate("<g:$tag/>")
+        applyTemplate("<inf:$tag/>")
 
         then:
         thrown GrailsTagException
@@ -99,7 +99,7 @@ class InflectorTagLibSpec extends Specification {
         given:
         Inflector.instance.addPluralize('(heroku)$', '$1Rocks');
         expect:
-        applyTemplate( '<g:pluralize>heroku</g:pluralize>' ) == 'herokuRocks'
+        applyTemplate( '<inf:pluralize>heroku</inf:pluralize>' ) == 'herokuRocks'
     }
 
 }

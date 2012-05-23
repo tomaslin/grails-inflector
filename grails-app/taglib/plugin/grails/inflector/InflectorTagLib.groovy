@@ -4,6 +4,8 @@ import org.modeshape.common.text.Inflector
 
 class InflectorTagLib {
 
+    static namespace ='inf'
+
     def pluralize = { args, body ->
         def word = body().toString()
         def count = args.'count' as Integer ?: 2
