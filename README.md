@@ -25,7 +25,7 @@ The opposite of pluralize.
 
      <inf:singularize>Chickens</inf:singularize> -> Chicken
 
-####Providing your own rules
+##Providing your own rules
 
 You can provide your own singulars and plurals by adding them to the Inflector singleton. 
 
