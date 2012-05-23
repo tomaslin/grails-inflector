@@ -9,6 +9,8 @@ stacktrace.log
 /*DB.*
 /cobertura.ser
 .DS_Store
+**/.DS_Store
+*.iml
 /target/
 /out/
 /web-app/plugins
