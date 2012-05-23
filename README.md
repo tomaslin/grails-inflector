@@ -17,6 +17,7 @@ Gives the plural of words
 Pluralize also takes a count, so 
 
      <inf:pluralize count="1">Chicken</inf:pluralize> -> Chicken
+     <inf:pluralize count="2">Chicken</inf:pluralize> -> Chickens
 
 ###Singularize
 
