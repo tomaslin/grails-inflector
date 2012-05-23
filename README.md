@@ -47,13 +47,13 @@ For more examples, look at the Inflector.java file found under the src/java
 
 The plugin also provides the following additional tags:
 
-###camelcase
+###camelCase
 Converts strings to lower Camel Case.
 
 ###underscore
 Makes an underscored form from the expression in the string
 
-###uppercase
+###capitalize
 Returns a copy of the input with the first character converted to uppercase and the remainder to lowercase.
 
 ###humanize
